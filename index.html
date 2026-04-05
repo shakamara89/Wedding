@@ -320,6 +320,17 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    /* ── 이미지 저장 방지 ── */
+    img {
+      -webkit-user-select: none;
+      user-select: none;
+      pointer-events: none;
+      -webkit-touch-callout: none;
+    }
+    * {
+      -webkit-touch-callout: none;
+    }
+
     /* ── TOAST ── */
     .toast {
       position: fixed;
@@ -465,6 +476,11 @@
 <div class="toast" id="toast">복사되었습니다</div>
 
 <script>
+  // 이미지 저장 방지
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('dragstart', e => e.preventDefault());
+
   // D-day
   const wedding = new Date('2026-11-08');
   const today = new Date();
